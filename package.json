@@ -46,5 +46,8 @@
     "node-sass": "^3.3.3",
     "run-sequence": "^1.0.2"
   },
-  "homepage": "https://github.com/logancallweb/fe-boiler#readme"
+  "homepage": "https://github.com/logancallweb/fe-boiler#readme",
+  "dependencies": {
+    "jquery": "^2.1.4"
+  }
 }

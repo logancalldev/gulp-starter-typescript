@@ -23,7 +23,7 @@ var scripts 	= "scripts/",
 		styles 		= "styles/",
 		images 		= "images/",
 		modules 	= "modules/",
-		vendor 		= "bower_components/",
+		vendor 		= "node_modules/",
 		icons 		= "icons/",
 		fonts 		= "fonts/";
 
@@ -38,12 +38,8 @@ var watchScripts 		= [ dir.source + scripts + "*.js", dir.source + scripts + "**
 gulp.task("clean", function(callback) { del(dir.dest); }); 
 
 
-// INSTALL BOWER DEPENDENCIES
-gulp.task("bower", function() { return plugins.bower(); });
-
-
-// MOVE BOWER DEPENDENCIES INTO THEIR CORRECT WORKING DIRECTORIES
-gulp.task("vendor", ["bower"], function() {
+// MOVE PROJECT DEPENDENCIES INTO THEIR CORRECT WORKING DIRECTORIES
+gulp.task("vendor", function() {
 
   // JQUERY DEPENDENCY
   gulp.src( vendor + "jquery/dist/jquery.min.js" )
