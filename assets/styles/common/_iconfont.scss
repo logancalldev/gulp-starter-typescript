@@ -1,0 +1,822 @@
+/*
+{
+  'icon-arrow-dropdown': 'EA01',
+  'icon-arrow-l': 'EA02',
+  'icon-arrow-r': 'EA03',
+  'icon-calendar': 'EA04',
+  'icon-car': 'EA05',
+  'icon-chair': 'EA06',
+  'icon-close': 'EA07',
+  'icon-dollar': 'EA08',
+  'icon-dot': 'EA09',
+  'icon-down-arrow': 'EA0A',
+  'icon-download': 'EA0B',
+  'icon-facebook': 'EA0C',
+  'icon-file-pdf-o': 'EA0D',
+  'icon-file-word-o': 'EA0E',
+  'icon-google-plus': 'EA0F',
+  'icon-googleplus': 'EA10',
+  'icon-grid': 'EA11',
+  'icon-home': 'EA12',
+  'icon-images': 'EA13',
+  'icon-info': 'EA14',
+  'icon-instagram': 'EA15',
+  'icon-list': 'EA16',
+  'icon-location': 'EA17',
+  'icon-mail': 'EA18',
+  'icon-menu': 'EA19',
+  'icon-news': 'EA1A',
+  'icon-paper-plane': 'EA1B',
+  'icon-paper': 'EA1C',
+  'icon-phone-circle': 'EA1D',
+  'icon-pinterest': 'EA1E',
+  'icon-search': 'EA1F',
+  'icon-star': 'EA20',
+  'icon-tickets': 'EA21',
+  'icon-twitter': 'EA22',
+  'icon-wordpress': 'EA23',
+  'icon-youtube': 'EA24',
+  'ICONS': 'DONE'
+}
+*/
+ 
+@font-face {
+  font-family: "website-icons";
+  src: url('../fonts/website-icons.eot?v=1450671904219');
+  src: url('../fonts/website-icons.eot?v=1450671904219') format('eot'),
+    url('../fonts/website-icons.woff?v=1450671904219') format('woff'),
+    url('../fonts/website-icons.ttf?v=1450671904219') format('truetype'),
+    url('../fonts/website-icons.svg#website-icons?v=1450671904219') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+ 
+[class^="icon-"], [class*=" icon-"] {
+  display: inline-block;
+  font-family: "website-icons";
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+ 
+.icon-arrow-dropdown { 
+  &:before { 
+    content: "\EA01" 
+  }
+}
+.icon-arrow-dropdown-half { 
+  &:after { 
+    content: "\EA01"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-arrow-dropdown-after { 
+  &:after { 
+    content: "\EA01" 
+  }
+}
+
+.icon-arrow-l { 
+  &:before { 
+    content: "\EA02" 
+  }
+}
+.icon-arrow-l-half { 
+  &:after { 
+    content: "\EA02"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-arrow-l-after { 
+  &:after { 
+    content: "\EA02" 
+  }
+}
+
+.icon-arrow-r { 
+  &:before { 
+    content: "\EA03" 
+  }
+}
+.icon-arrow-r-half { 
+  &:after { 
+    content: "\EA03"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-arrow-r-after { 
+  &:after { 
+    content: "\EA03" 
+  }
+}
+
+.icon-calendar { 
+  &:before { 
+    content: "\EA04" 
+  }
+}
+.icon-calendar-half { 
+  &:after { 
+    content: "\EA04"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-calendar-after { 
+  &:after { 
+    content: "\EA04" 
+  }
+}
+
+.icon-car { 
+  &:before { 
+    content: "\EA05" 
+  }
+}
+.icon-car-half { 
+  &:after { 
+    content: "\EA05"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-car-after { 
+  &:after { 
+    content: "\EA05" 
+  }
+}
+
+.icon-chair { 
+  &:before { 
+    content: "\EA06" 
+  }
+}
+.icon-chair-half { 
+  &:after { 
+    content: "\EA06"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-chair-after { 
+  &:after { 
+    content: "\EA06" 
+  }
+}
+
+.icon-close { 
+  &:before { 
+    content: "\EA07" 
+  }
+}
+.icon-close-half { 
+  &:after { 
+    content: "\EA07"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-close-after { 
+  &:after { 
+    content: "\EA07" 
+  }
+}
+
+.icon-dollar { 
+  &:before { 
+    content: "\EA08" 
+  }
+}
+.icon-dollar-half { 
+  &:after { 
+    content: "\EA08"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-dollar-after { 
+  &:after { 
+    content: "\EA08" 
+  }
+}
+
+.icon-dot { 
+  &:before { 
+    content: "\EA09" 
+  }
+}
+.icon-dot-half { 
+  &:after { 
+    content: "\EA09"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-dot-after { 
+  &:after { 
+    content: "\EA09" 
+  }
+}
+
+.icon-down-arrow { 
+  &:before { 
+    content: "\EA0A" 
+  }
+}
+.icon-down-arrow-half { 
+  &:after { 
+    content: "\EA0A"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-down-arrow-after { 
+  &:after { 
+    content: "\EA0A" 
+  }
+}
+
+.icon-download { 
+  &:before { 
+    content: "\EA0B" 
+  }
+}
+.icon-download-half { 
+  &:after { 
+    content: "\EA0B"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-download-after { 
+  &:after { 
+    content: "\EA0B" 
+  }
+}
+
+.icon-facebook { 
+  &:before { 
+    content: "\EA0C" 
+  }
+}
+.icon-facebook-half { 
+  &:after { 
+    content: "\EA0C"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-facebook-after { 
+  &:after { 
+    content: "\EA0C" 
+  }
+}
+
+.icon-file-pdf-o { 
+  &:before { 
+    content: "\EA0D" 
+  }
+}
+.icon-file-pdf-o-half { 
+  &:after { 
+    content: "\EA0D"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-file-pdf-o-after { 
+  &:after { 
+    content: "\EA0D" 
+  }
+}
+
+.icon-file-word-o { 
+  &:before { 
+    content: "\EA0E" 
+  }
+}
+.icon-file-word-o-half { 
+  &:after { 
+    content: "\EA0E"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-file-word-o-after { 
+  &:after { 
+    content: "\EA0E" 
+  }
+}
+
+.icon-google-plus { 
+  &:before { 
+    content: "\EA0F" 
+  }
+}
+.icon-google-plus-half { 
+  &:after { 
+    content: "\EA0F"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-google-plus-after { 
+  &:after { 
+    content: "\EA0F" 
+  }
+}
+
+.icon-googleplus { 
+  &:before { 
+    content: "\EA10" 
+  }
+}
+.icon-googleplus-half { 
+  &:after { 
+    content: "\EA10"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-googleplus-after { 
+  &:after { 
+    content: "\EA10" 
+  }
+}
+
+.icon-grid { 
+  &:before { 
+    content: "\EA11" 
+  }
+}
+.icon-grid-half { 
+  &:after { 
+    content: "\EA11"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-grid-after { 
+  &:after { 
+    content: "\EA11" 
+  }
+}
+
+.icon-home { 
+  &:before { 
+    content: "\EA12" 
+  }
+}
+.icon-home-half { 
+  &:after { 
+    content: "\EA12"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-home-after { 
+  &:after { 
+    content: "\EA12" 
+  }
+}
+
+.icon-images { 
+  &:before { 
+    content: "\EA13" 
+  }
+}
+.icon-images-half { 
+  &:after { 
+    content: "\EA13"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-images-after { 
+  &:after { 
+    content: "\EA13" 
+  }
+}
+
+.icon-info { 
+  &:before { 
+    content: "\EA14" 
+  }
+}
+.icon-info-half { 
+  &:after { 
+    content: "\EA14"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-info-after { 
+  &:after { 
+    content: "\EA14" 
+  }
+}
+
+.icon-instagram { 
+  &:before { 
+    content: "\EA15" 
+  }
+}
+.icon-instagram-half { 
+  &:after { 
+    content: "\EA15"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-instagram-after { 
+  &:after { 
+    content: "\EA15" 
+  }
+}
+
+.icon-list { 
+  &:before { 
+    content: "\EA16" 
+  }
+}
+.icon-list-half { 
+  &:after { 
+    content: "\EA16"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-list-after { 
+  &:after { 
+    content: "\EA16" 
+  }
+}
+
+.icon-location { 
+  &:before { 
+    content: "\EA17" 
+  }
+}
+.icon-location-half { 
+  &:after { 
+    content: "\EA17"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-location-after { 
+  &:after { 
+    content: "\EA17" 
+  }
+}
+
+.icon-mail { 
+  &:before { 
+    content: "\EA18" 
+  }
+}
+.icon-mail-half { 
+  &:after { 
+    content: "\EA18"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-mail-after { 
+  &:after { 
+    content: "\EA18" 
+  }
+}
+
+.icon-menu { 
+  &:before { 
+    content: "\EA19" 
+  }
+}
+.icon-menu-half { 
+  &:after { 
+    content: "\EA19"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-menu-after { 
+  &:after { 
+    content: "\EA19" 
+  }
+}
+
+.icon-news { 
+  &:before { 
+    content: "\EA1A" 
+  }
+}
+.icon-news-half { 
+  &:after { 
+    content: "\EA1A"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-news-after { 
+  &:after { 
+    content: "\EA1A" 
+  }
+}
+
+.icon-paper-plane { 
+  &:before { 
+    content: "\EA1B" 
+  }
+}
+.icon-paper-plane-half { 
+  &:after { 
+    content: "\EA1B"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-paper-plane-after { 
+  &:after { 
+    content: "\EA1B" 
+  }
+}
+
+.icon-paper { 
+  &:before { 
+    content: "\EA1C" 
+  }
+}
+.icon-paper-half { 
+  &:after { 
+    content: "\EA1C"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-paper-after { 
+  &:after { 
+    content: "\EA1C" 
+  }
+}
+
+.icon-phone-circle { 
+  &:before { 
+    content: "\EA1D" 
+  }
+}
+.icon-phone-circle-half { 
+  &:after { 
+    content: "\EA1D"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-phone-circle-after { 
+  &:after { 
+    content: "\EA1D" 
+  }
+}
+
+.icon-pinterest { 
+  &:before { 
+    content: "\EA1E" 
+  }
+}
+.icon-pinterest-half { 
+  &:after { 
+    content: "\EA1E"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-pinterest-after { 
+  &:after { 
+    content: "\EA1E" 
+  }
+}
+
+.icon-search { 
+  &:before { 
+    content: "\EA1F" 
+  }
+}
+.icon-search-half { 
+  &:after { 
+    content: "\EA1F"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-search-after { 
+  &:after { 
+    content: "\EA1F" 
+  }
+}
+
+.icon-star { 
+  &:before { 
+    content: "\EA20" 
+  }
+}
+.icon-star-half { 
+  &:after { 
+    content: "\EA20"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-star-after { 
+  &:after { 
+    content: "\EA20" 
+  }
+}
+
+.icon-tickets { 
+  &:before { 
+    content: "\EA21" 
+  }
+}
+.icon-tickets-half { 
+  &:after { 
+    content: "\EA21"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-tickets-after { 
+  &:after { 
+    content: "\EA21" 
+  }
+}
+
+.icon-twitter { 
+  &:before { 
+    content: "\EA22" 
+  }
+}
+.icon-twitter-half { 
+  &:after { 
+    content: "\EA22"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-twitter-after { 
+  &:after { 
+    content: "\EA22" 
+  }
+}
+
+.icon-wordpress { 
+  &:before { 
+    content: "\EA23" 
+  }
+}
+.icon-wordpress-half { 
+  &:after { 
+    content: "\EA23"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-wordpress-after { 
+  &:after { 
+    content: "\EA23" 
+  }
+}
+
+.icon-youtube { 
+  &:before { 
+    content: "\EA24" 
+  }
+}
+.icon-youtube-half { 
+  &:after { 
+    content: "\EA24"; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+}
+.icon-youtube-after { 
+  &:after { 
+    content: "\EA24" 
+  }
+}
