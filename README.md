@@ -14,7 +14,8 @@ This repo is the source folder for your project. It will process and put assets 
 
 ##Getting Started
 1. Add repo to project as "source" folder
-2. Within "Gulpfile.js"...
+2. Cut ties with this repo, make sure to include it in you project repo.
+3. Within "Gulpfile.js"...
 	1. Set the dir.root variable to match whatever your virtual host URL is for the given project
 	2. Change dir.* paths to match your project, if needed.
 
