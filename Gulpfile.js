@@ -7,12 +7,13 @@ var gulp         = require("gulp");
 
 
 // DIRECTORIES
-var publicDir = "../public/";
+// var publicDir = "../public/";
 
 var dir = {
+	publicDir : "../public/",
 	root 	: "http://fe-boiler.local",
 	s 		: "assets/",
-	d 		: publicDir + "assets/"
+	d 		: dir.publicDir + "assets/"
 };
 
 
