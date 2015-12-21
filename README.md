@@ -13,7 +13,7 @@ This repo is the source folder for your project. It will process and put assets 
 		- Gulpfile.js
 ```
 
-##Getting Started
+#Getting Started
 1. Add repo to project as "source" folder
 2. Cut ties with this repo, make sure to include it in you project repo.
 3. Within "Gulpfile.js"...
@@ -25,7 +25,7 @@ This repo is the source folder for your project. It will process and put assets 
 1. In terminal run, "bower install -S <<dependency>>"
 2. In "Gulpfile.js", locate the "MOVE BOWER DEPENDENCIES" gulp task
 	1. Duplicate "JQUERY DEPENDENCY"
-	2. Update "gulp.src" and "gulp.dest" to be sure the dependency is copied to the correct assets folder
+	2. Update "gulp.src" and "gulp.dest" to be sure the dependency is copied to the correct assets folder.
 
 
 ##Add images to project
