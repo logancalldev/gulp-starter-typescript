@@ -7,14 +7,15 @@ var gulp         = require("gulp");
 
 
 // DIRECTORIES
-// var publicDir = "../public/";
-
 var dir = {
-	publicDir : "../public/",
-	root 	: "http://fe-boiler.local",
-	s 		: "assets/",
-	d 		: dir.publicDir + "assets/"
+	root 			: "http://fe-boiler.dev",
+	public		: "../public/",
+	source 		: "assets/",
+	init 			: function() {
+		this.dest = this.public + this.source
+	}
 };
+dir.init();
 
 
 // PATHS
@@ -27,8 +28,14 @@ var scripts 	= "scripts/",
 		fonts 		= "fonts/";
 
 
+// WATCH GLOBS
+var watchScripts 		= [ dir.source + scripts + "*.js", dir.source + scripts + "**/*.js", dir.source + scripts + "**/**/*.js", ],
+		watchStyles 		= [ dir.source + styles + "*.scss", dir.source + styles + "**/*.scss", dir.source + styles + "**/**/*.scss", ],
+		watchViews			= [ dir.public + "*.php", dir.public + "**/*.php", dir.public + "**/**/*.php",];
+
+
 // CLEAN (DELETE) PRODUCED ASSETS
-gulp.task("clean", function(callback) { del(dir.d); }); 
+gulp.task("clean", function(callback) { del(dir.dest); }); 
 
 
 // INSTALL BOWER DEPENDENCIES
@@ -40,13 +47,13 @@ gulp.task("vendor", ["bower"], function() {
 
   // JQUERY DEPENDENCY
   gulp.src( vendor + "jquery/dist/jquery.min.js" )
-  .pipe(gulp.dest( dir.d + scripts ));
+  .pipe(gulp.dest( dir.dest + scripts ));
 });
 
 
 // STYLE DEVELOPMENT TASK
 gulp.task("style", function() {
-  return gulp.src( dir.s + styles + "app.scss" )
+  return gulp.src( dir.source + styles + "app.scss" )
   .pipe(plugins.plumber(function(error) {
     plugins.util.log(
       plugins.util.colors.red(error.message),
@@ -60,17 +67,17 @@ gulp.task("style", function() {
     autoprefixer: true
   }))
   .pipe(plugins.rename('app.css'))
-  .pipe(gulp.dest( dir.d + styles ))
+  .pipe(gulp.dest( dir.dest + styles ))
   .pipe(browserSync.stream())
   .pipe(plugins.minifyCss())
   .pipe(plugins.rename('app.min.css'))
-  .pipe(gulp.dest( dir.d + styles ))
+  .pipe(gulp.dest( dir.dest + styles ))
 });
 
 
 // JAVASCRIPT DEVELOPMENT TASK
 gulp.task("script", function() {
-  return gulp.src( dir.s + scripts + "**" )
+  return gulp.src( dir.source + scripts + "**" )
   .pipe(plugins.plumber(function(error) {
     plugins.util.log(
       plugins.util.colors.red(error.message),
@@ -81,32 +88,32 @@ gulp.task("script", function() {
   }))
   .pipe(plugins.babel())
   .pipe(plugins.concat('app.js'))
-  .pipe(gulp.dest( dir.d + scripts ))
+  .pipe(gulp.dest( dir.dest + scripts ))
   .pipe(plugins.uglify())
   .pipe(plugins.rename('app.min.js'))
-  .pipe(gulp.dest( dir.d + scripts ))
+  .pipe(gulp.dest( dir.dest + scripts ))
   .pipe(browserSync.stream());
 });
 
 
 // IMAGE TASK - COPY & COMPRESS
 gulp.task("image", function() {
-  return gulp.src( dir.s + images + "**" )
+  return gulp.src( dir.source + images + "**" )
     .pipe(plugins.imagemin({
       progressive: true,
       interlaced: true,
       svgoPlugins: [{removeUnknownsAndDefaults: false}, {cleanupIDs: false}]
     }))
-    .pipe(gulp.dest( dir.d + images ))
+    .pipe(gulp.dest( dir.dest + images ))
 });
 
 
-// ICONFONTS TASK - 
+// ICONFONTS TASK - reference for svg setup: https://github.com/nfroidure/gulp-iconfont
 gulp.task('iconfont', function() {
-  gulp.src([ dir.s + icons + 'svg/*.svg'])
+  gulp.src([ dir.source + icons + 'svg/*.svg'])
     .pipe(plugins.iconfont({ fontName: 'website-icons' }))
     .on('glyphs', function(glyphs, options) {
-      gulp.src( dir.s + icons + 'iconfont.template')
+      gulp.src( dir.source + icons + 'iconfont.template')
         .pipe(plugins.consolidate('lodash', {
           glyphs: glyphs,
           fontName: 'website-icons',
@@ -115,26 +122,26 @@ gulp.task('iconfont', function() {
           className: 'icon'
         }))
         .pipe(plugins.rename('_iconfont.scss'))
-        .pipe(gulp.dest( dir.s + styles + 'common/'));
+        .pipe(gulp.dest( dir.source + styles + 'common/'));
     })
-    .pipe(gulp.dest( dir.s + fonts ));
+    .pipe(gulp.dest( dir.source + fonts ));
 
-  gulp.src( dir.s + icons + 'flexslider/*')
-    .pipe(gulp.dest( dir.s + fonts ));
+  gulp.src( dir.source + icons + 'flexslider/*')
+    .pipe(gulp.dest( dir.source + fonts ));
 });
 
 
 // FONTS TASK
 gulp.task('font', ["iconfont"], function() {
-  return gulp.src( dir.s + fonts + "**" )
-    .pipe(gulp.dest( dir.d + fonts ))
+  return gulp.src( dir.source + fonts + "**" )
+    .pipe(gulp.dest( dir.dest + fonts ))
 });
 
 
 // MODULES TASK - A task to be used lightly, only when it's possible to limit a library/module (such as a calendar or lightbox) to a single or few pages it's being used on.
 gulp.task("modules", function() {
-	return gulp.src( dir.s + modules + "**" )
-		.pipe(gulp.dest( dir.d + modules ))
+	return gulp.src( dir.source + modules + "**" )
+		.pipe(gulp.dest( dir.dest + modules ))
 });
 
 
@@ -142,19 +149,16 @@ gulp.task("modules", function() {
 
 	// MAIN BROWSERSYNC TASK
 	gulp.task("watch", ["script", "style"], function() {
-	// gulp.task("watch", ["script"],  function() {
 
 		// Serve files from the root of this project
 		browserSync.init({
-			server: {
-				baseDir: publicDir
-			}
+			proxy : dir.root
 		});
 
-		// Watch file tasks and run corresponding watch task
-		gulp.watch( dir.s + scripts + "**", ["script"] );
-		gulp.watch( dir.s + styles + "**", ["style"] );
-		gulp.watch( [ publicDir + "*.html", publicDir + "**/*.html", publicDir + "**/**/*.html", publicDir + "**/**/**/*.html"]).on("change", browserSync.reload);
+		// Watch file tasks and run corresponding tasks
+		gulp.watch( watchScripts, ["script"] );
+		gulp.watch( watchStyles, ["style"] );
+		gulp.watch( watchViews ).on("change", browserSync.reload);
 	});
 
 	
@@ -173,6 +177,5 @@ gulp.task("default", function(callback) {
 });
 
 
-// 
 
 
