@@ -1,1 +1,1 @@
-alert("js is still working");
+alert("js is working");

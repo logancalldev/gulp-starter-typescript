@@ -10,8 +10,9 @@ var gulp         = require("gulp");
 var publicDir = "../public/";
 
 var dir = {
-	s : "assets/",
-	d : publicDir + "assets/"
+	root 	: "http://fe-boiler.local",
+	s 		: "assets/",
+	d 		: publicDir + "assets/"
 };
 
 
@@ -42,7 +43,7 @@ gulp.task("vendor", ["bower"], function() {
 });
 
 
-// STYLE TASK
+// STYLE DEVELOPMENT TASK
 gulp.task("style", function() {
   return gulp.src( dir.s + styles + "app.scss" )
   .pipe(plugins.plumber(function(error) {
@@ -59,13 +60,14 @@ gulp.task("style", function() {
   }))
   .pipe(plugins.rename('app.css'))
   .pipe(gulp.dest( dir.d + styles ))
+  .pipe(browserSync.stream())
   .pipe(plugins.minifyCss())
   .pipe(plugins.rename('app.min.css'))
   .pipe(gulp.dest( dir.d + styles ))
 });
 
 
-// JAVASCRIPT TASK
+// JAVASCRIPT DEVELOPMENT TASK
 gulp.task("script", function() {
   return gulp.src( dir.s + scripts + "**" )
   .pipe(plugins.plumber(function(error) {
@@ -82,6 +84,7 @@ gulp.task("script", function() {
   .pipe(plugins.uglify())
   .pipe(plugins.rename('app.min.js'))
   .pipe(gulp.dest( dir.d + scripts ))
+  .pipe(browserSync.stream());
 });
 
 
@@ -148,8 +151,8 @@ gulp.task("modules", function() {
 		});
 
 		// Watch file tasks and run corresponding watch task
-		gulp.watch( dir.s + scripts + "**", ["script"], browserSync.reload );
-		gulp.watch( dir.s + styles + "**", ["style"], browserSync.reload );
+		gulp.watch( dir.s + scripts + "**", ["script"] );
+		gulp.watch( dir.s + styles + "**", ["style"] );
 		gulp.watch( [ publicDir + "*.html", publicDir + "**/*.html", publicDir + "**/**/*.html", publicDir + "**/**/**/*.html"]).on("change", browserSync.reload);
 	});
 
@@ -167,5 +170,8 @@ gulp.task("default", function(callback) {
               "modules",
               callback);
 });
+
+
+// 
 
 

@@ -36,16 +36,6 @@
     content: "\<%= glyph.unicode[0].charCodeAt(0).toString(16).toUpperCase() %>" 
   }
 }
-.<%= className %>-<%= glyph.name %>-half { 
-  &:after { 
-    content: "\<%= glyph.unicode[0].charCodeAt(0).toString(16).toUpperCase() %>"; 
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    overflow: hidden;
-  }
-}
 .<%= className %>-<%= glyph.name %>-after { 
   &:after { 
     content: "\<%= glyph.unicode[0].charCodeAt(0).toString(16).toUpperCase() %>" 
