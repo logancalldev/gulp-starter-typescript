@@ -1,5 +1,5 @@
 {
-  "name": "fe-boiler",
+  "name": "front-end-boilerplate",
   "version": "0.0.1",
   "description": "A front-end boiler plate built with gulp and browser-sync",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/logancallweb/fe-boiler.git"
+    "url": "ssh://git@git.lovecomm.net:7999/ldev/front-end-boilerplate.git"
   },
   "keywords": [
     "boilerplate",
@@ -21,7 +21,7 @@
   "author": "Logan Call",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/logancallweb/fe-boiler/issues"
+    "url": "http://git.lovecomm.net/projects/LDEV/repos/front-end-boilerplate/"
   },
   "devDependencies": {
     "browser-sync": "^2.10.1",
@@ -46,7 +46,7 @@
     "node-sass": "^3.3.3",
     "run-sequence": "^1.0.2"
   },
-  "homepage": "https://github.com/logancallweb/fe-boiler#readme",
+  "homepage": "http://git.lovecomm.net/projects/LDEV/repos/front-end-boilerplate/",
   "dependencies": {
     "jquery": "^2.1.4"
   }

@@ -23,10 +23,10 @@ This repo is the source folder for your project. It will process and put assets 
 
 
 ##How to add project dependencies
-1. In terminal run, `npm install -save <<dependency>>`
+1. In terminal run, `npm install --save <<dependency>>`
 2. In **Gulpfile.js**, locate the **MOVE PROJECT DEPENDENCIES** gulp task
 	1. Duplicate **JQUERY DEPENDENCY**
-	2. Update **gulp.src** and **gulp.dest**to be sure the dependency is copied to the correct assets folder.
+	2. Update **gulp.src** and **gulp.dest** to be sure the dependency is copied to the correct assets folder.
 
 
 ##Add images to project
