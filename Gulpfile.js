@@ -65,7 +65,7 @@ gulp.task("style", function() {
   .pipe(plugins.rename('app.css'))
   .pipe(gulp.dest( dir.dest + styles ))
   .pipe(browserSync.stream())
-  .pipe(plugins.minifyCss())
+  .pipe(plugins.cssnano())
   .pipe(plugins.rename('app.min.css'))
   .pipe(gulp.dest( dir.dest + styles ))
 });
@@ -85,9 +85,9 @@ gulp.task("script", function() {
   .pipe(plugins.babel())
   .pipe(plugins.concat('app.js'))
   .pipe(gulp.dest( dir.dest + scripts ))
-  .pipe(plugins.uglify())
-  .pipe(plugins.rename('app.min.js'))
-  .pipe(gulp.dest( dir.dest + scripts ))
+  // .pipe(plugins.uglify())
+  // .pipe(plugins.rename('app.min.js'))
+  // .pipe(gulp.dest( dir.dest + scripts ))
   .pipe(browserSync.stream());
 });
 
