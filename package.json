@@ -1,6 +1,6 @@
 {
   "name": "front-end-boilerplate",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "A front-end boiler plate built with gulp and browser-sync",
   "main": "index.js",
   "scripts": {
@@ -25,7 +25,6 @@
   },
   "devDependencies": {
     "browser-sync": "^2.10.1",
-    "del": "^1.1.1",
     "gulp": "^3.9.0",
     "gulp-babel": "^5.3.0",
     "gulp-bower": "0.0.10",

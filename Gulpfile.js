@@ -1,41 +1,35 @@
 // GLOBALS
 var gulp         = require("gulp");
-		plugins      = require("gulp-load-plugins")(),
-		runSequence  = require("run-sequence"),
-		del          = require("del"),
-		browserSync	 = require("browser-sync").create();
+    plugins      = require("gulp-load-plugins")(),
+    runSequence  = require("run-sequence"),
+    browserSync  = require("browser-sync").create();
 
 
 // DIRECTORIES
 var dir = {
-	root 			: "http://fe-boiler.dev",
-	public		: "../public/",
-	source 		: "assets/",
-	init 			: function() {
-		this.dest = this.public + this.source
-	}
+  vhost       : "http://front-end-boilerplate.dev", //This is your vhost URL, not a relative path to your project folder (although they will sometimes share the same name)
+  root    : "../public/", // Parent folder of source and assets dir. If a WordPress site, change this to "../"
+  source    : "./", // Source files, same folder as repo
+  init      : function() {
+    this.assets = this.root + "assets/"; // This is where assets used by the site will go after compiled/transpiled/minified/browserified ;)
+  }
 };
 dir.init();
 
-
 // PATHS
-var scripts 	= "scripts/",
-		styles 		= "styles/",
-		images 		= "images/",
-		modules 	= "modules/",
-		vendor 		= "node_modules/",
-		icons 		= "icons/",
-		fonts 		= "fonts/";
+var scripts   = "scripts/",
+    styles    = "styles/",
+    images    = "images/",
+    modules   = "modules/",
+    vendor    = "vendor/",
+    icons     = "icons/",
+    fonts     = "fonts/";
 
 
 // WATCH GLOBS
-var watchScripts 		= [ dir.source + scripts + "*.js", dir.source + scripts + "**/*.js", dir.source + scripts + "**/**/*.js", ],
-		watchStyles 		= [ dir.source + styles + "*.scss", dir.source + styles + "**/*.scss", dir.source + styles + "**/**/*.scss", ],
-		watchViews			= [ dir.public + "*.php", dir.public + "**/*.php", dir.public + "**/**/*.php",];
-
-
-// CLEAN (DELETE) PRODUCED ASSETS
-gulp.task("clean", function(callback) { del(dir.dest); }); 
+var watchScripts    = [ dir.source + scripts + "*.js", dir.source + scripts + "**/*.js", dir.source + scripts + "**/**/*.js"],
+    watchStyles     = [ dir.source + styles + "*.scss", dir.source + styles + "**/*.scss", dir.source + styles + "**/**/*.scss"],
+    watchViews      = [ dir.root + "*.php", dir.root + "**/*.php", dir.root + "**/**/*.php", dir.root + "**/**/**/*.php"];
 
 
 // MOVE PROJECT DEPENDENCIES INTO THEIR CORRECT WORKING DIRECTORIES
@@ -43,7 +37,7 @@ gulp.task("vendor", function() {
 
   // JQUERY DEPENDENCY
   gulp.src( vendor + "jquery/dist/jquery.min.js" )
-  .pipe(gulp.dest( dir.dest + scripts ));
+  .pipe(gulp.dest( dir.assets + scripts ));
 });
 
 
@@ -62,12 +56,10 @@ gulp.task("style", function() {
   .pipe(plugins.rucksack({
     autoprefixer: true
   }))
-  .pipe(plugins.rename('app.css'))
-  .pipe(gulp.dest( dir.dest + styles ))
-  .pipe(browserSync.stream())
-  .pipe(plugins.cssnano())
+  .pipe(plugins.minifyCss())
   .pipe(plugins.rename('app.min.css'))
-  .pipe(gulp.dest( dir.dest + styles ))
+  .pipe(gulp.dest( dir.assets + styles ))
+  .pipe(browserSync.stream())
 });
 
 
@@ -84,10 +76,10 @@ gulp.task("script", function() {
   }))
   .pipe(plugins.babel())
   .pipe(plugins.concat('app.js'))
-  .pipe(gulp.dest( dir.dest + scripts ))
-  // .pipe(plugins.uglify())
+  .pipe(gulp.dest( dir.assets + scripts ))
+  // .pipe(plugins.uglify()) // WHEN GOING LIVE... uncomment out this and the next two lines, comment out the two before, update the src tag of your websites js to the minified version
   // .pipe(plugins.rename('app.min.js'))
-  // .pipe(gulp.dest( dir.dest + scripts ))
+  // .pipe(gulp.dest( dir.assets + scripts ))
   .pipe(browserSync.stream());
 });
 
@@ -100,7 +92,7 @@ gulp.task("image", function() {
       interlaced: true,
       svgoPlugins: [{removeUnknownsAndDefaults: false}, {cleanupIDs: false}]
     }))
-    .pipe(gulp.dest( dir.dest + images ))
+    .pipe(gulp.dest( dir.assets + images ))
 });
 
 
@@ -130,35 +122,30 @@ gulp.task('iconfont', function() {
 // FONTS TASK
 gulp.task('font', ["iconfont"], function() {
   return gulp.src( dir.source + fonts + "**" )
-    .pipe(gulp.dest( dir.dest + fonts ))
+    .pipe(gulp.dest( dir.assets + fonts ))
 });
 
 
 // MODULES TASK - A task to be used lightly, only when it's possible to limit a library/module (such as a calendar or lightbox) to a single or few pages it's being used on.
 gulp.task("modules", function() {
-	return gulp.src( dir.source + modules + "**" )
-		.pipe(gulp.dest( dir.dest + modules ))
+  return gulp.src( dir.source + modules + "**" )
+    .pipe(gulp.dest( dir.assets + modules ))
 });
 
 
-// START BROWSERSYNC TASKS
+// BROWSERSYNC WATCH TASK
+  gulp.task("watch", ["script", "style"], function() {
 
-	// MAIN BROWSERSYNC TASK
-	gulp.task("watch", ["script", "style"], function() {
+    // Serve files from the root of this project
+    browserSync.init({
+      proxy : dir.vhost
+    });
 
-		// Serve files from the root of this project
-		browserSync.init({
-			proxy : dir.root
-		});
-
-		// Watch file tasks and run corresponding tasks
-		gulp.watch( watchScripts, ["script"] );
-		gulp.watch( watchStyles, ["style"] );
-		gulp.watch( watchViews ).on("change", browserSync.reload);
-	});
-
-	
-// END BROWSERSYNC TASKS
+    // Watch file tasks and run corresponding tasks
+    gulp.watch( watchScripts, ["script"] );
+    gulp.watch( watchStyles, ["style"] );
+    gulp.watch( watchViews ).on("change", browserSync.reload);
+  });
 
 
 // INITIALIZE PROJECT TASK

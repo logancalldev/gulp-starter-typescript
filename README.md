@@ -1,20 +1,20 @@
 # Front-End Boilerplate
 A boiler plate for Front-End developers, built with gulp and browsersync.
 
-This repo is the source folder for your project. It will process and put assets in a sibling `public/assets` directory. Directory structure looks like so...
+This repo is the `_source` folder for your project. It can be placed wherever you like in your project, just be sure to update the paths variables within **Gulpfile.js**. It currently will put assets in a sibling `public/assets` directory. Directory structure looks like so...
 
 ```
 - Project Folder
-	- public
-		- assets
-	- source (this directory is this repo)
-		- assets
-		- package.json
-		- Gulpfile.js
+		- public
+				- assets
+		- _source (this directory is this repo)
+				- **PROJECT FILES**
+				- package.json
+				- Gulpfile.js
 ```
 
 #Getting Started
-1. Add repo to project as **source** folder
+1. Add repo to project as **`_source`** folder
 2. Cut ties with this repo, make sure to include it in you project repo.
 3. Run `npm install` in the terminal
 3. Within **Gulpfile.js**...
@@ -23,14 +23,14 @@ This repo is the source folder for your project. It will process and put assets 
 
 
 ##How to add project dependencies
-1. In terminal run, `npm install --save <<dependency>>`
+1. In terminal run, `bower install --save-dev <<dependency>>`
 2. In **Gulpfile.js**, locate the **MOVE PROJECT DEPENDENCIES** gulp task
 	1. Duplicate **JQUERY DEPENDENCY**
 	2. Update **gulp.src** and **gulp.dest** to be sure the dependency is copied to the correct assets folder.
 
 
 ##Add images to project
-- After copying new images within the **source/images** directory, simply run the "gulp image" task.
+- After copying new images within the **`_source`/images** directory, simply run the "gulp image" task.
 
 
 ##Add icons to project
@@ -48,3 +48,8 @@ This repo is the source folder for your project. It will process and put assets 
 		- Encoding: UTF-8
 		- Output fewer elements: check
 	- Leave the rest unchecked.
+
+
+#IF WORDPRESS SITE...
+- Within `Gulpfile.js`, change dir.root to "./"
+- Within `Gulpfile.js`, you may want to comment out the php section of the gulp watch task, `gulp.watch( watchViews ).on("change", browserSync.reload);`. If you choose to not do so, every instance of the webpage will reload, everytime you change anything php file or anything within the wordpress admin.
