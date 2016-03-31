@@ -56,7 +56,7 @@ gulp.task("style", function() {
   .pipe(plugins.rucksack({
     autoprefixer: true
   }))
-  .pipe(plugins.minifyCss())
+  .pipe(plugins.cssnano())
   .pipe(plugins.rename('app.min.css'))
   .pipe(gulp.dest( dir.assets + styles ))
   .pipe(browserSync.stream())
