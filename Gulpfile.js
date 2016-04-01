@@ -27,8 +27,8 @@ var scripts   = "scripts/",
 
 
 // WATCH GLOBS
-var watchScripts    = [ dir.source + scripts + "*.js", dir.source + scripts + "**/*.js", dir.source + scripts + "**/**/*.js"],
-    watchStyles     = [ dir.source + styles + "*.scss", dir.source + styles + "**/*.scss", dir.source + styles + "**/**/*.scss"],
+var watchScripts    = [ dir.source + scripts + "**"],
+    watchStyles     = [ dir.source + styles + "**"],
     watchViews      = [ dir.root + "*.php", dir.root + "**/*.php", dir.root + "**/**/*.php", dir.root + "**/**/**/*.php"];
 
 
