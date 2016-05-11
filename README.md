@@ -1,12 +1,12 @@
 # Front-End Boilerplate
 A boiler plate for Front-End developers, built with gulp and browsersync.
 
-This repo is the `_source` folder for your project. It can be placed wherever you like in your project, just be sure to update the paths variables within **Gulpfile.js**. It currently will put assets in a sibling `public/assets` directory. Directory structure looks like so...
+This repo is the `_source` folder for your project. It can be placed wherever you like in your project, just be sure to update the paths variables within **Gulpfile.js**. It currently will put outputted js/css/font/image files in a sibling `public/dist` directory. Directory structure looks like so...
 
 ```
 - Project Folder
 		- public
-				- assets
+				- dist
 		- _source (this directory is this repo)
 				- **PROJECT FILES**
 				- package.json
@@ -17,16 +17,18 @@ This repo is the `_source` folder for your project. It can be placed wherever yo
 1. Add repo to project as **`_source`** folder
 2. Cut ties with this repo, make sure to include it in you project repo.
 3. Run `npm install` in the terminal
-3. Within **Gulpfile.js**...
+4. Within **setup.json**...
 	1. Set the dir.root variable to match whatever your virtual host URL is for the given project
-	2. Change dir.** paths to match your project, if needed.
+	2. If needed, change paths to match your project. It's currently setup in a manner that works well with WordPress/Sage.
+	3. Add your styles and scripts **includes** (usually from node_modules/\*\*).
+		- The scripts that you add here will be prepended to your concatenated app.js file.
+		- The styles you add here will be accessible as includes within your app.scss file.
 
 
-##How to add project dependencies
-1. In terminal run, `bower install --save-dev <<dependency>>`
-2. In **Gulpfile.js**, locate the **MOVE PROJECT DEPENDENCIES** gulp task
-	1. Duplicate **JQUERY DEPENDENCY**
-	2. Update **gulp.src** and **gulp.dest** to be sure the dependency is copied to the correct assets folder.
+##How to add project dependencies/includes
+1. In terminal run, `npm i --save <<dependency>>`
+2. In **setup.json**, locate the **includes** object
+3. Add the file path within the respective **styles** or **scripts** array.
 
 
 ##Add images to project
@@ -49,7 +51,5 @@ This repo is the `_source` folder for your project. It can be placed wherever yo
 		- Output fewer elements: check
 	- Leave the rest unchecked.
 
-
-#IF WORDPRESS SITE...
-- Within `Gulpfile.js`, change dir.root to "./"
-- Within `Gulpfile.js`, you may want to comment out the php section of the gulp watch task, `gulp.watch( watchViews ).on("change", browserSync.reload);`. If you choose to not do so, every instance of the webpage will reload, everytime you change anything php file or anything within the wordpress admin.
+##Watching files & live reload (Browsersync)
+- You can change which files browsersync is watching within the **watch** array within setup.json.

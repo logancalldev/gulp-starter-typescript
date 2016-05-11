@@ -1,0 +1,27 @@
+{
+	"vhost": "http://VHOST.dev",
+	"src": {
+		"scripts": ["./scripts/*.js", "./scripts/**/*.js"],
+		"babel": "../dist/temp/babel.js",
+		"styles": "./styles/app.scss",
+		"images": "./images/**",
+		"cdnBackups": "./node_modules/",
+		"svgs": "./icons/svg/*.svg",
+		"iconTemplate" : "./icons/iconfont.template",
+		"fonts": "./fonts/**"
+	},
+	"dest": {
+		"js": "../dist/js/",
+		"babel": "../dist/temp/",
+		"css": "../dist/css/",
+		"sass": "./styles/common/",
+		"images": "../dist/images/",
+		"generatedFonts": "./fonts/",
+		"fonts": "../dist/fonts/"
+	},
+	"watch": ["../*.php", "../templates/*.php", "../lib/*.php", "./scripts/**", "./styles/**"],
+	"includes": {
+		"styles": [],
+		"scripts": []
+	}
+}
