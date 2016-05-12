@@ -19,7 +19,15 @@
 		"generatedFonts": "./fonts/",
 		"fonts": "../dist/fonts/"
 	},
-	"watch": ["../*.php", "../templates/*.php", "../lib/*.php", "./scripts/**", "./styles/**"],
+	"watch": {
+		"views": [
+			"../*.php",
+			"../templates/*.php",
+			"../lib/*.php"
+		],
+		"scripts": "./scripts/**",
+		"styles": "./styles/**"
+	},
 	"includes": {
 		"styles": [],
 		"scripts": []

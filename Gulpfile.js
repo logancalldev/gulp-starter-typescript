@@ -124,7 +124,6 @@ gulp.task('watch', ['script', 'style'], function() {
 		proxy : vhost,
 		files: [
 			{
-				match: watch,
 				options: {
 					ignored: '.*'
 				}
@@ -135,6 +134,10 @@ gulp.task('watch', ['script', 'style'], function() {
 		reloadOnRestart: true,
 		notify: false
 	});
+
+	gulp.watch( watch.scripts, ["script"] );
+	gulp.watch( watch.styles, ["style"] );
+	gulp.watch( watch.views ).on("change", browserSync.reload);
 });
 
 // INITIALIZE PROJECT TASK
