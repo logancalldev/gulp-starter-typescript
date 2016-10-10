@@ -2,7 +2,7 @@
 	"vhost": "http://VHOST.dev",
 	"src": {
 		"scripts": ["./scripts/*.js", "./scripts/**/*.js"],
-		"babel": "../dist/temp/babel.js",
+		"babel": "../public/dist/temp/babel.js",
 		"styles": "./styles/app.scss",
 		"images": "./images/**",
 		"cdnBackups": "./node_modules/",
@@ -11,13 +11,13 @@
 		"fonts": "./fonts/**"
 	},
 	"dest": {
-		"js": "../dist/js/",
-		"babel": "../dist/temp/",
-		"css": "../dist/css/",
+		"js": "../public/dist/js/",
+		"babel": "../public/dist/temp/",
+		"css": "../public/dist/css/",
 		"sass": "./styles/common/",
-		"images": "../dist/images/",
+		"images": "../public/dist/images/",
 		"generatedFonts": "./fonts/",
-		"fonts": "../dist/fonts/"
+		"fonts": "../public/dist/fonts/"
 	},
 	"watch": {
 		"views": [

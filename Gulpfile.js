@@ -17,9 +17,19 @@ var setup = require('./setup.json'),
 gulp.task('cdn-backups', function() {
 
 	// JQUERY DEPENDENCY
-	gulp.src( cdnBackups + 'jquery/dist/jquery.min.js' )
-	.pipe(plugins.uglify())
-	.pipe(gulp.dest( dest.js ));
+	// gulp.src( cdnBackups + 'jquery/dist/jquery.min.js' )
+	// .pipe(plugins.uglify())
+	// .pipe(gulp.dest( dest.js ));
+
+	// gulp.src( cdnBackups + 'jquery/dist/jquery.min.js' )
+	// .pipe(plugins.uglify())
+	// .pipe(gulp.dest( dest.js ));
+	//
+	// gulp.src( cdnBackups + 'bootstrap-sass/assets/javascripts/bootstrap.min.js')
+	// .pipe(gulp.dest( dest.js ))
+	//
+	// gulp.src( cdnBackups + 'bootstrap-sass/assets/stylesheets/**')
+	// .pipe(gulp.dest( src.css + 'bootstrap/' ))
 
 });
 
