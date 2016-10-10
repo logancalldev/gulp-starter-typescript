@@ -75,10 +75,6 @@ gulp.task('script', ['scripts-concat'], function() {
 	// .pipe(gulp.dest( dest.js ))
 	.pipe(browserSync.stream());
 });
-// create production-ready JS file
-gulp.task('script-production', function() {
-	return gulp.src( dest.js + "")
-});
 
 // IMAGE TASK - COPY & COMPRESS
 gulp.task('image', function() {
@@ -130,7 +126,6 @@ gulp.task('watch', ['script', 'style'], function() {
 			}
 		],
 		logPrefix: vhost,
-		browser: ["google chrome", "firefoxdeveloperedition", "firefox", "safari"],
 		reloadOnRestart: true,
 		notify: false
 	});
