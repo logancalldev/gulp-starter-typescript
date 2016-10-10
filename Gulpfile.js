@@ -88,7 +88,7 @@ gulp.task('image', function() {
 			interlaced: true,
 			svgoPlugins: [{removeUnknownsAndDefaults: false}, {cleanupIDs: false}]
 		}))
-		.pipe(gulp.dest( dir.assets + images ));
+		.pipe(gulp.dest( dest.images ));
 });
 
 // ICONFONTS TASK - reference for svg setup: https://github.com/nfroidure/gulp-iconfont
