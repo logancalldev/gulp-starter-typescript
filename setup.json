@@ -20,6 +20,8 @@
 	},
 	"watch": {
 		"views": [
+			"../public/*.php",
+			"../public/**/*.php",
 			"../*.php",
 			"../templates/*.php",
 			"../lib/*.php",
