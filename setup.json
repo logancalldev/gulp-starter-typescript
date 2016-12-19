@@ -1,7 +1,7 @@
 {
 	"vhost": "http://fed.dev",
 	"src": {
-		"scripts": ["./scripts/*.js", "./scripts/**/*.js"],
+		"scripts": ["./scripts/*.ts", "./scripts/**/*.ts", "./scripts/**/**/*.ts"],
 		"styles": "./styles/app.scss",
 		"images": "./images/**",
 		"cdnBackups": "./node_modules/",

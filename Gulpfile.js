@@ -2,7 +2,8 @@
 var gulp				 = require('gulp'),
 	plugins			= require('gulp-load-plugins')(),
 	runSequence	= require('run-sequence'),
-	browserSync	= require('browser-sync').create();
+	browserSync	= require('browser-sync').create(),
+	typescriptProject = plugins.typescript.createProject('tsconfig.json');
 
 // PROJECT PATHS AND DEPENDENCIES
 var setup = require('./setup.json'),
@@ -58,7 +59,7 @@ gulp.task('style', function() {
 
 // JAVASCRIPT DEVELOPMENT TASK
 gulp.task('script', function() {
-	return gulp.src( src.scripts )
+	var tsResults = gulp.src( src.scripts )
 	.pipe(plugins.plumber(function(error) {
 		plugins.util.log(
 			plugins.util.colors.red(error.message),
@@ -68,19 +69,14 @@ gulp.task('script', function() {
 		this.emit('end');
 	}))
 	.pipe(plugins.sourcemaps.init())
-	.pipe(plugins.babel())
+	.pipe(typescriptProject())
+
+	return tsResults
 	.pipe(plugins.concat('app.min.js'))
 	.pipe(plugins.sourcemaps.write('.'))
 	.pipe(gulp.dest( dest.js ))
 	.pipe(browserSync.stream());
 });
-// gulp.task('script', ['scripts-concat'], function() {
-// 	return gulp.src( includes.scripts )
-// 	.pipe(plugins.uglify())
-// 	.pipe(plugins.rename('app.min.js'))
-// 	.pipe(gulp.dest( dest.js ))
-// 	.pipe(browserSync.stream());
-// });
 
 // IMAGE TASK - COPY & COMPRESS
 gulp.task('image', function() {
