@@ -2,9 +2,10 @@
 	"vhost": "http://fed.dev",
 	"src": {
 		"scripts": ["./scripts/*.ts", "./scripts/**/*.ts", "./scripts/**/**/*.ts"],
-		"styles": "./styles/app.scss",
+		"stylesApp": "./styles/app.scss",
+		"styles": "./styles/",
 		"images": "./images/**",
-		"cdnBackups": "./node_modules/",
+		"cdns": "./node_modules/",
 		"svgs": "./icons/svg/*.svg",
 		"iconTemplate" : "./icons/iconfont.template",
 		"fonts": "./fonts/**"

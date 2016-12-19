@@ -13,11 +13,11 @@ var setup = require('./setup.json'),
 	dest = setup.dest,
 	watch = setup.watch,
 	includes = setup.includes
-	cdnBackups = setup.src.cdnBackups;
+	cdns = setup.src.cdns;
 
 // STYLE DEVELOPMENT TASK
 gulp.task('style', function() {
-	return gulp.src( src.styles )
+	return gulp.src( src.stylesApp )
 	.pipe(plugins.plumber(function(error) {
 		plugins.util.log(
 			plugins.util.colors.red(error.message),
@@ -128,19 +128,19 @@ gulp.task('watch', ['script', 'style'], function() {
 gulp.task('cdn-backups', function() {
 
 // JQUERY DEPENDENCY
-// gulp.src( cdnBackups + 'jquery/dist/jquery.min.js' )
+// gulp.src( cdns + 'jquery/dist/jquery.min.js' )
 // .pipe(plugins.uglify())
 // .pipe(gulp.dest( dest.js ));
 
-// gulp.src( cdnBackups + 'jquery/dist/jquery.min.js' )
+// gulp.src( cdns + 'jquery/dist/jquery.min.js' )
 // .pipe(plugins.uglify())
 // .pipe(gulp.dest( dest.js ));
 //
-// gulp.src( cdnBackups + 'bootstrap-sass/assets/javascripts/bootstrap.min.js')
+// gulp.src( cdns + 'bootstrap-sass/assets/javascripts/bootstrap.min.js')
 // .pipe(gulp.dest( dest.js ))
 //
-// gulp.src( cdnBackups + 'bootstrap-sass/assets/stylesheets/**')
-// .pipe(gulp.dest( src.css + 'bootstrap/' ))
+// gulp.src( cdns + 'bootstrap-sass/assets/stylesheets/**')
+// .pipe(gulp.dest( src.styles + 'bootstrap/' ))
 
 });
 
