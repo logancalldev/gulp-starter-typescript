@@ -1,0 +1,8 @@
+{
+    "configuration": {
+      "rules": {
+        "class-name": true
+      }
+    },
+		"formatter": "verbose"
+}

@@ -45,6 +45,7 @@
     "lodash": "^3.10.1",
     "node-sass": "^3.3.3",
     "run-sequence": "^1.0.2",
+    "tslint": "^4.1.1",
     "typescript": "^2.1.4"
   },
   "homepage": "http://git.lovecomm.net/projects/LDEV/repos/front-end-boilerplate/"

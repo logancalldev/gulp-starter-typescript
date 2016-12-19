@@ -1,0 +1,32 @@
+front-end-boilerplate@1.0.0 /code/fed.dev/source
+├── UNMET PEER DEPENDENCY eslint-plugin-import@2.2.0 extraneous
+├── UNMET PEER DEPENDENCY eslint-plugin-jsx-a11y@3.0.2 extraneous
+└─┬ tslint@4.1.1 
+  ├── diff@3.1.0 
+  ├─┬ findup-sync@0.3.0 
+  │ └── glob@5.0.15 
+  ├─┬ optimist@0.6.1 
+  │ ├── minimist@0.0.10 
+  │ └── wordwrap@0.0.3 
+  ├── underscore.string@3.3.4 
+  └─┬ update-notifier@1.0.3 
+    ├─┬ boxen@0.6.0 
+    │ ├── ansi-align@1.1.0 
+    │ ├── camelcase@2.1.1 
+    │ ├── cli-boxes@1.0.0 
+    │ ├── filled-array@1.1.0 
+    │ └── widest-line@1.0.0 
+    ├─┬ configstore@2.1.0 
+    │ ├── dot-prop@3.0.0 
+    │ ├─┬ mkdirp@0.5.1 
+    │ │ └── minimist@0.0.8 
+    │ └─┬ write-file-atomic@1.2.0 
+    │   └── slide@1.1.6 
+    ├── is-npm@1.0.0 
+    ├─┬ latest-version@2.0.0 
+    │ └─┬ package-json@2.4.0 
+    │   ├── registry-auth-token@3.1.0 
+    │   └── registry-url@3.1.0 
+    ├── semver-diff@2.1.0 
+    └── xdg-basedir@2.0.0 
+

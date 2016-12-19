@@ -3,7 +3,8 @@ var gulp				 = require('gulp'),
 	plugins			= require('gulp-load-plugins')(),
 	runSequence	= require('run-sequence'),
 	browserSync	= require('browser-sync').create(),
-	typescriptProject = plugins.typescript.createProject('tsconfig.json');
+	typescriptProject = plugins.typescript.createProject('tsconfig.json'),
+	tslintConfig = require('./tslint.json');
 
 // PROJECT PATHS AND DEPENDENCIES
 var setup = require('./setup.json'),
@@ -13,26 +14,6 @@ var setup = require('./setup.json'),
 	watch = setup.watch,
 	includes = setup.includes
 	cdnBackups = setup.src.cdnBackups;
-
-// MOVE CDN BACKUPS INTO THEIR RESPECTIVE FOLDERS, NON-CDN'S SHOULD BE ADDED TO THE SCRIPTS AND STYLES INCLUDES ARRAYS WITHIN SETUP.JSON
-gulp.task('cdn-backups', function() {
-
-	// JQUERY DEPENDENCY
-	// gulp.src( cdnBackups + 'jquery/dist/jquery.min.js' )
-	// .pipe(plugins.uglify())
-	// .pipe(gulp.dest( dest.js ));
-
-	// gulp.src( cdnBackups + 'jquery/dist/jquery.min.js' )
-	// .pipe(plugins.uglify())
-	// .pipe(gulp.dest( dest.js ));
-	//
-	// gulp.src( cdnBackups + 'bootstrap-sass/assets/javascripts/bootstrap.min.js')
-	// .pipe(gulp.dest( dest.js ))
-	//
-	// gulp.src( cdnBackups + 'bootstrap-sass/assets/stylesheets/**')
-	// .pipe(gulp.dest( src.css + 'bootstrap/' ))
-
-});
 
 // STYLE DEVELOPMENT TASK
 gulp.task('style', function() {
@@ -57,8 +38,14 @@ gulp.task('style', function() {
 	.pipe(browserSync.stream());
 });
 
-// JAVASCRIPT DEVELOPMENT TASK
-gulp.task('script', function() {
+// JAVASCRIPT DEVELOPMENT TASKS
+gulp.task('tslint', () => {
+	return gulp.src( src.scripts )
+	.pipe(plugins.tslint(tslintConfig))
+	.pipe(plugins.tslint.report())
+})
+
+gulp.task('script', ['tslint'], function() {
 	var tsResults = gulp.src( src.scripts )
 	.pipe(plugins.plumber(function(error) {
 		plugins.util.log(
@@ -135,6 +122,26 @@ gulp.task('watch', ['script', 'style'], function() {
 	gulp.watch( watch.scripts, ["script"] );
 	gulp.watch( watch.styles, ["style"] );
 	gulp.watch( watch.views ).on("change", browserSync.reload);
+});
+
+// MOVE CDN BACKUPS INTO THEIR RESPECTIVE FOLDERS, NON-CDN'S SHOULD BE ADDED TO THE SCRIPTS AND STYLES INCLUDES ARRAYS WITHIN SETUP.JSON
+gulp.task('cdn-backups', function() {
+
+// JQUERY DEPENDENCY
+// gulp.src( cdnBackups + 'jquery/dist/jquery.min.js' )
+// .pipe(plugins.uglify())
+// .pipe(gulp.dest( dest.js ));
+
+// gulp.src( cdnBackups + 'jquery/dist/jquery.min.js' )
+// .pipe(plugins.uglify())
+// .pipe(gulp.dest( dest.js ));
+//
+// gulp.src( cdnBackups + 'bootstrap-sass/assets/javascripts/bootstrap.min.js')
+// .pipe(gulp.dest( dest.js ))
+//
+// gulp.src( cdnBackups + 'bootstrap-sass/assets/stylesheets/**')
+// .pipe(gulp.dest( src.css + 'bootstrap/' ))
+
 });
 
 // INITIALIZE PROJECT TASK
