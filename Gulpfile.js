@@ -4,7 +4,7 @@ var gulp				 = require('gulp'),
 	runSequence	= require('run-sequence'),
 	browserSync	= require('browser-sync').create(),
 	typescriptProject = plugins.typescript.createProject('tsconfig.json'),
-	tslintConfig = require('./tslint.json');
+	tslintConfig = require('./tslintconfig.json');
 
 // PROJECT PATHS AND DEPENDENCIES
 var setup = require('./setup.json'),
