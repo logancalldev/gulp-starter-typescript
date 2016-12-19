@@ -44,21 +44,20 @@ gulp.task('style', function() {
 			);
 		this.emit('end');
 	}))
-	.pipe(plugins.sass({
-		includePaths: includes.styles
-	}))
+	.pipe(plugins.sourcemaps.init())
+	.pipe(plugins.sass().on('error', plugins.sass.logError))
 	.pipe(plugins.rucksack({
 		autoprefixer: true
 	}))
 	.pipe(plugins.cssnano())
 	.pipe(plugins.rename('app.min.css'))
+	.pipe(plugins.sourcemaps.write())
 	.pipe(gulp.dest( dest.css ))
 	.pipe(browserSync.stream());
 });
 
-// JAVASCRIPT DEVELOPMENT TASKS
-// Run custom JS through babel transpiler
-gulp.task('babel', function() {
+// JAVASCRIPT DEVELOPMENT TASK
+gulp.task('script', function() {
 	return gulp.src( src.scripts )
 	.pipe(plugins.plumber(function(error) {
 		plugins.util.log(
@@ -68,23 +67,20 @@ gulp.task('babel', function() {
 			);
 		this.emit('end');
 	}))
+	.pipe(plugins.sourcemaps.init())
 	.pipe(plugins.babel())
-	.pipe(plugins.concat('babel.js'))
-	.pipe(gulp.dest( dest.babel ));
-});
-// Concat custom JS file with the incdlues.scripts
-gulp.task('scripts-concat', ['babel'], function() {
-	return includes.scripts.push(src.babel);
-});
-gulp.task('script', ['scripts-concat'], function() {
-	return gulp.src( includes.scripts )
-	.pipe(plugins.concat('app.js'))
+	.pipe(plugins.concat('app.min.js'))
+	.pipe(plugins.sourcemaps.write('.'))
 	.pipe(gulp.dest( dest.js ))
-	// .pipe(plugins.uglify()) // WHEN GOING LIVE... uncomment out this and the next two lines, comment out the two before, update the src tag of your websites js to the minified version
-	// .pipe(plugins.rename('app.min.js'))
-	// .pipe(gulp.dest( dest.js ))
 	.pipe(browserSync.stream());
 });
+// gulp.task('script', ['scripts-concat'], function() {
+// 	return gulp.src( includes.scripts )
+// 	.pipe(plugins.uglify())
+// 	.pipe(plugins.rename('app.min.js'))
+// 	.pipe(gulp.dest( dest.js ))
+// 	.pipe(browserSync.stream());
+// });
 
 // IMAGE TASK - COPY & COMPRESS
 gulp.task('image', function() {
