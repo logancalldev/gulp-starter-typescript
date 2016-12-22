@@ -2,9 +2,15 @@
 var gulp				 = require('gulp'),
 	plugins			= require('gulp-load-plugins')(),
 	runSequence	= require('run-sequence'),
+	browserify = require("browserify"),
+	source = require('vinyl-source-stream'),
+	tsify = require("tsify"),
 	browserSync	= require('browser-sync').create(),
-	typescriptProject = plugins.typescript.createProject('tsconfig.json'),
-	tslintConfig = require('./tslintconfig.json');
+	watchify = require("watchify"),
+	buffer = require('vinyl-buffer'),
+	tsProject = plugins.typescript.createProject("tsconfig.json");
+	// typescriptProject = plugins.typescript.createProject('tsconfig.json');
+	// tslintConfig = require('./tslintConfig.json');
 
 // PROJECT PATHS AND DEPENDENCIES
 var setup = require('./setup.json'),
@@ -14,6 +20,32 @@ var setup = require('./setup.json'),
 	watch = setup.watch,
 	includes = setup.includes
 	cdns = setup.src.cdns;
+
+var watchedBrowserify = watchify(browserify({
+    basedir: '.',
+    debug: true,
+    entries: ['scripts/main.ts'],
+    cache: {},
+    packageCache: {}
+}).plugin(tsify));
+
+function bundle() {
+	return watchedBrowserify
+	.transform('babelify', {
+        presets: ['es2015'],
+        extensions: ['.ts', '.js']
+    })
+	.bundle()
+	.pipe(source('app.min.js'))
+	.pipe(buffer())
+	.pipe(plugins.sourcemaps.init({loadMaps: true}))
+	.pipe(plugins.uglify())
+	.pipe(plugins.sourcemaps.write('./'))
+	.pipe(gulp.dest(dest.js))
+	.pipe(browserSync.stream())
+}
+
+gulp.task("script", bundle);
 
 // STYLE DEVELOPMENT TASK
 gulp.task('style', function() {
@@ -35,33 +67,6 @@ gulp.task('style', function() {
 	.pipe(plugins.rename('app.min.css'))
 	.pipe(plugins.sourcemaps.write())
 	.pipe(gulp.dest( dest.css ))
-	.pipe(browserSync.stream());
-});
-
-// JAVASCRIPT DEVELOPMENT TASKS
-gulp.task('tslint', () => {
-	return gulp.src( src.scripts )
-	.pipe(plugins.tslint(tslintConfig))
-	.pipe(plugins.tslint.report())
-})
-
-gulp.task('script', ['tslint'], function() {
-	var tsResults = gulp.src( src.scripts )
-	.pipe(plugins.plumber(function(error) {
-		plugins.util.log(
-			plugins.util.colors.red(error.message),
-			plugins.util.colors.yellow('\r\nOn line: '+error.line),
-			plugins.util.colors.yellow('\r\nCode Extract: '+error.extract)
-			);
-		this.emit('end');
-	}))
-	.pipe(plugins.sourcemaps.init())
-	.pipe(typescriptProject())
-
-	return tsResults
-	.pipe(plugins.concat('app.min.js'))
-	.pipe(plugins.sourcemaps.write('.'))
-	.pipe(gulp.dest( dest.js ))
 	.pipe(browserSync.stream());
 });
 
@@ -102,7 +107,7 @@ gulp.task('font', ["iconfont"], function() {
 });
 
 // BROWSERSYNC WATCH TASK
-gulp.task('watch', ['script', 'style'], function() {
+gulp.task('default', ['script', 'style'], function() {
 
 	// Serve files from this project's virtual host that has been configured with the server rendering this site
 	browserSync.init({
@@ -119,34 +124,33 @@ gulp.task('watch', ['script', 'style'], function() {
 		notify: false
 	});
 
-	gulp.watch( watch.scripts, ["script"] );
+	gulp.watch( watch.scripts, ["script"] ).on("end", browserSync.reload);
 	gulp.watch( watch.styles, ["style"] );
 	gulp.watch( watch.views ).on("change", browserSync.reload);
 });
 
 // MOVE CDN BACKUPS INTO THEIR RESPECTIVE FOLDERS, NON-CDN'S SHOULD BE ADDED TO THE SCRIPTS AND STYLES INCLUDES ARRAYS WITHIN SETUP.JSON
-gulp.task('cdn-backups', function() {
+gulp.task('cdns', function() {
 
 // JQUERY DEPENDENCY
-// gulp.src( cdns + 'jquery/dist/jquery.min.js' )
-// .pipe(plugins.uglify())
-// .pipe(gulp.dest( dest.js ));
-
 // gulp.src( cdns + 'jquery/dist/jquery.min.js' )
 // .pipe(plugins.uglify())
 // .pipe(gulp.dest( dest.js ));
 //
 // gulp.src( cdns + 'bootstrap-sass/assets/javascripts/bootstrap.min.js')
 // .pipe(gulp.dest( dest.js ))
-//
-// gulp.src( cdns + 'bootstrap-sass/assets/stylesheets/**')
-// .pipe(gulp.dest( src.styles + 'bootstrap/' ))
+// 
+// gulp.src( [cdns + 'slick-carousel/slick/*.scss'])
+// .pipe(gulp.dest( src.styles + 'slickslider/' ))
+
+gulp.src( cdns + 'bootstrap-sass/assets/stylesheets/**')
+.pipe(gulp.dest( src.styles + 'bootstrap/' ))
 
 });
 
 // INITIALIZE PROJECT TASK
-gulp.task('default', function(callback) {
-	runSequence('font',
-							['cdn-backups', 'style', 'script', 'image'],
-							callback);
-});
+// gulp.task('default', function(callback) {
+// 	runSequence('font',
+// 							['cdns', 'style', 'script', 'image'],
+// 							callback);
+// });

@@ -1,7 +1,8 @@
 {
     "configuration": {
       "rules": {
-        "class-name": true
+        "class-name": true,
+				"indent": [true, "tabs"]
       }
     },
 		"formatter": "verbose"
