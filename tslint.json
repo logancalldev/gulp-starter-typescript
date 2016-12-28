@@ -1,0 +1,13 @@
+{
+	"extends": "tslint:latest",
+	"rules": {
+		"curly": true,
+		"indent": [true, "tabs"]
+	},
+	"jsRules": {
+		"curly": true,
+		"indent": [true, "tabs"]
+	},
+	"rulesDirectory": [
+	]
+}

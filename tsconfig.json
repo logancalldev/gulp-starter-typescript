@@ -2,6 +2,13 @@
 	"files": ["scripts/**"],
 	"compilerOptions": {
 		"noImplicitAny": true,
-		"target": "es5"
+		"noImplicitReturns": true,
+		"noImplicitThis": true,
+		"target": "es5",
+		"module": "commonjs",
+		"removeComments": true,
+		"alwaysStrict": true,
+		"pretty": true,
+		"allowJs": true
 	}
 }

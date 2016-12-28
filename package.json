@@ -1,7 +1,7 @@
 {
-  "name": "gulp-boilerplate",
+  "name": "gulp-starter",
   "version": "2.0.0",
-  "description": "A Gulp boilerplate that processes Scss into CSS, Typescript into JS, SVGs into font-icons, and does image minification",
+  "description": "A Gulp starter that processes Scss into CSS, Typescript into JS, SVGs into font-icons, and does image minification",
   "main": "Gulpfile.js",
   "repository": "ssh://git@git.lovecomm.net:7999/ldev/front-end-boilerplate.git",
   "author": "Logan Call <logancall.dev@gmail.com>",
@@ -11,9 +11,11 @@
     "browserify": "^13.1.1",
     "gulp": "^3.9.1",
     "gulp-sourcemaps": "^1.9.1",
+    "gulp-tslint": "^7.0.1",
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.8",
     "tsify": "^2.0.7",
+    "tslint": "^4.2.0",
     "typescript": "^2.1.4",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
