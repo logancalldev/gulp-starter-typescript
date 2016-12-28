@@ -7,6 +7,7 @@
   "author": "Logan Call <logancall.dev@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "bootstrap-sass": "^3.3.7",
     "browser-sync": "^2.18.5",
     "browserify": "^13.1.1",
     "gulp": "^3.9.1",
@@ -25,6 +26,7 @@
     "gulp-tslint": "^7.0.1",
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.8",
+    "jquery": "^3.1.1",
     "lodash": "^4.17.3",
     "postcss-reporter": "^3.0.0",
     "postcss-scss": "^0.4.0",

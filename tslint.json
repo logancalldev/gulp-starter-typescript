@@ -2,7 +2,8 @@
 	"extends": "tslint:latest",
 	"rules": {
 		"curly": true,
-		"indent": [true, "tabs"]
+		"indent": [true, "tabs"],
+		"no-reference": false
 	},
 	"jsRules": {
 		"curly": true,

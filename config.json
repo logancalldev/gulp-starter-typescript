@@ -3,8 +3,7 @@
 	"dist": "../public/assets/",
 	"sassIndex": "styles/index.scss",
 	"sassFilesToLint": [
-		"styles/**",
-		"!styles/vendor/**"
+		"styles/**"
 	],
 	"scriptEntries": [
 		"scripts/index.ts"

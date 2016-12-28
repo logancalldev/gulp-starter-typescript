@@ -4,5 +4,9 @@
     "indentation": ["tab", {
       "except": ["value"]
     }]
-  }
+  },
+	"ignoreFiles": [
+		"./node_modules/**",
+		"./styles/iconfont.scss"
+	]
 }
