@@ -142,11 +142,11 @@ gulp.task("iconfonts", () => {
         .pipe(rename("iconfont.scss"))
         .pipe(gulp.dest("styles/"));
     })
-    .pipe(gulp.dest( "fonts/generated" ));
+    .pipe(gulp.dest(conf.dist + "fonts"));
 });
 
-gulp.task("fonts", ["iconfonts"], () => { // may look overkill in conjunction with iconfonts task, however we often need to include fonts from other libraries, thus all fonts will get put into /assets/fonts, not just our generated ones.
-  return gulp.src("fonts/generated/**")
+gulp.task("fonts", ["iconfonts"], () => { // in case we have other font libraries that need to be but in assets... put them here and then they'll get copied over
+  return gulp.src("fonts/vendor/**")
     .pipe(gulp.dest( conf.dist + "fonts" ))
 });
 
