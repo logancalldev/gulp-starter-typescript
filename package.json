@@ -33,6 +33,7 @@
     "tsify": "^2.0.7",
     "tslint": "^4.2.0",
     "typescript": "^2.1.4",
+    "typings": "^2.1.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   }
