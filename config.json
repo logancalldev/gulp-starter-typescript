@@ -1,0 +1,10 @@
+{
+	"vhost": "http://gulp:80",
+	"dist": "../public/assets",
+	"scriptEntries": [
+		"scripts/index.ts"
+	],
+	"watchedViews": [
+		"../public/*.html"
+	]
+}
