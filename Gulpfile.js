@@ -14,12 +14,15 @@ const rucksack = require("gulp-rucksack");
 const cssnano = require("gulp-cssnano");
 const rename = require("gulp-rename");
 const postcss = require("gulp-postcss");
-const stylelint = require('stylelint');
-const reporter = require('postcss-reporter');
-const syntax_scss = require('postcss-scss');
+const stylelint = require("stylelint");
+const reporter = require("postcss-reporter");
+const syntax_scss = require("postcss-scss");
 const typescriptConfig = require("./tsconfig.json"); // config options – https://www.typescriptlang.org/docs/handbook/compiler-options.html
 const stylelintConfig = require("./.stylelintrc.json");
+const imagemin = require("gulp-imagemin");
 const conf = require("./config.json");
+const iconfont = require("gulp-iconfont");
+const consolidate = require("gulp-consolidate");
 
 gulp.task("tslint", () =>
 	gulp.src(["scripts/*.ts", "scripts/**/*.ts"])
@@ -113,4 +116,40 @@ gulp.task("watch", ["scripts", "styles"], () => {
 	gulp.watch([conf.watchedViews]).on("change", browserSync.reload);
 });
 
-gulp.task("default", ["watch"])
+gulp.task("images", () => {
+	return gulp.src("images/**")
+		.pipe(imagemin({
+			progressive: true,
+			interlaced: true,
+			svgoPlugins: [{removeUnknownsAndDefaults: false}, {cleanupIDs: false}]
+		}))
+		.pipe(gulp.dest(conf.dist))
+})
+
+// reference for svg setup: https://github.com/nfroidure/gulp-iconfont
+gulp.task("iconfonts", () => {
+  return gulp.src("fonts/icons/svg/**")
+    .pipe(iconfont({ fontName: "website-icons" }))
+    .on("glyphs", function(glyphs, options) {
+      gulp.src("fonts/icons/iconfont.template")
+        .pipe(consolidate("lodash", {
+          glyphs: glyphs,
+          fontName: "website-icons",
+          fontPath: "../fonts/",
+          timestamp: Date.now(),
+          className: "icon"
+        }))
+        .pipe(rename("iconfont.scss"))
+        .pipe(gulp.dest("styles/"));
+    })
+    .pipe(gulp.dest( "fonts/generated" ));
+});
+
+gulp.task("fonts", ["iconfonts"], () => { // may look overkill in conjunction with iconfonts task, however we often need to include fonts from other libraries, thus all fonts will get put into /assets/fonts, not just our generated ones.
+  return gulp.src("fonts/generated/**")
+    .pipe(gulp.dest( conf.dist + "fonts" ))
+});
+
+gulp.task("default", ["images", "fonts", "watch"])
+
+// add cache busting to css/js
