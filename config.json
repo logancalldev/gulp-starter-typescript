@@ -1,6 +1,7 @@
 {
 	"vhost": "http://gulp:80",
-	"dist": "../public/assets",
+	"dist": "../public/assets/",
+	"sassIndex": "styles/index.scss",
 	"scriptEntries": [
 		"scripts/index.ts"
 	],

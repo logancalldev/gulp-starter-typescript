@@ -9,6 +9,10 @@ const sourcemaps = require("gulp-sourcemaps");
 const buffer = require("vinyl-buffer");
 const browserSync = require("browser-sync").create();
 const plumber = require("gulp-plumber");
+const sass = require("gulp-sass");
+const rucksack = require("gulp-rucksack");
+const cssnano = require("gulp-cssnano");
+const rename = require("gulp-rename");
 const typescriptConfig = require("./tsconfig.json"); // config options – https://www.typescriptlang.org/docs/handbook/compiler-options.html
 const conf = require("./config.json");
 
@@ -50,7 +54,23 @@ gulp.task("scripts", ["tslint"], () => {
 		.pipe(browserSync.stream());
 });
 
-gulp.task("watch", ["scripts"], () => {
+gulp.task("styles", () => {
+	return gulp.src(conf.sassIndex)
+	.pipe(plumber(function (error, second) {
+			gutil.log(gutil.colors.red(error.message));
+			this.emit("end");
+		}))
+	.pipe(sourcemaps.init())
+	.pipe(sass().on('error', sass.logError))
+	.pipe(rucksack({autoprefixer: true}))
+	.pipe(cssnano())
+	.pipe(rename("bundle.css"))
+	.pipe(sourcemaps.write())
+	.pipe(gulp.dest(conf.dist))
+	.pipe(browserSync.stream());
+})
+
+gulp.task("watch", ["scripts", "styles"], () => {
 	// Serve files from this project"s virtual host that has been configured with the server rendering this site
 	browserSync.init({
 		proxy: conf.vhost,
@@ -67,7 +87,7 @@ gulp.task("watch", ["scripts"], () => {
 	});
 
 	gulp.watch(["scripts/**"], ["scripts"]);
-	// gulp.watch( ["styles/**"], ["style"] );
+	gulp.watch( ["styles/**"], ["styles"] );
 	gulp.watch([conf.watchedViews]).on("change", browserSync.reload);
 });
 
