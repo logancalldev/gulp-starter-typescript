@@ -1,64 +1,21 @@
 {
-  "name": "front-end-boilerplate",
-  "version": "1.0.0",
-  "description": "A front-end boiler plate built with gulp and browser-sync",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "ssh://git@git.lovecomm.net:7999/ldev/front-end-boilerplate.git"
-  },
-  "keywords": [
-    "boilerplate",
-    "sass",
-    "scss",
-    "gulp",
-    "browser-sync",
-    "javascript"
-  ],
-  "author": "Logan Call",
+  "name": "gulp-boilerplate",
+  "version": "2.0.0",
+  "description": "A Gulp boilerplate that processes Scss into CSS, Typescript into JS, SVGs into font-icons, and does image minification",
+  "main": "Gulpfile.js",
+  "repository": "ssh://git@git.lovecomm.net:7999/ldev/front-end-boilerplate.git",
+  "author": "Logan Call <logancall.dev@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "http://git.lovecomm.net/projects/LDEV/repos/front-end-boilerplate/"
-  },
-  "devDependencies": {
-    "babel-preset-es2015": "^6.18.0",
-    "babelify": "^7.3.0",
-    "browser-sync": "^2.10.1",
+  "dependencies": {
+    "browser-sync": "^2.18.5",
     "browserify": "^13.1.1",
     "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-consolidate": "^0.1.2",
-    "gulp-cssnano": "^2.1.1",
-    "gulp-iconfont": "^5.0.0",
-    "gulp-imagemin": "^2.2.1",
-    "gulp-load-plugins": "^1.0.0",
-    "gulp-plumber": "^1.0.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-rucksack": "^0.1.2",
-    "gulp-sass": "^2.0.0",
     "gulp-sourcemaps": "^1.9.1",
-    "gulp-tslint": "^7.0.1",
-    "gulp-typescript": "^3.1.3",
-    "gulp-uglify": "^1.5.4",
-    "gulp-util": "^3.0.7",
-    "imagemin-pngcrush": "^4.0.0",
-    "lodash": "^3.10.1",
-    "node-sass": "^3.3.3",
-    "run-sequence": "^1.0.2",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.8",
     "tsify": "^2.0.7",
-    "tslint": "^4.1.1",
     "typescript": "^2.1.4",
     "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.8.0"
-  },
-  "homepage": "http://git.lovecomm.net/projects/LDEV/repos/front-end-boilerplate/",
-  "dependencies": {
-    "bootstrap-sass": "^3.3.7",
-    "jquery": "^3.1.1",
-    "slick-carousel": "^1.6.0"
+    "vinyl-source-stream": "^1.1.0"
   }
 }

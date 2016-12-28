@@ -1,9 +1,0 @@
-{
-    "configuration": {
-      "rules": {
-        "class-name": true,
-				"indent": [true, "tabs"]
-      }
-    },
-		"formatter": "verbose"
-}

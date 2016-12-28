@@ -1,20 +1,10 @@
 {
-	"files": [
-      "scripts/main.ts",
-			"scripts/nav.ts",
-			"scripts/footer.ts",
-			"scripts/slider.ts"
-  ],
-	"compileOnSave": false,
-	"buildOnSave": false,
-	"compilerOptions": {
-		"target": "es5",
-		"module": "commonjs",
-		"declaration": false,
-		"noImplicitAny": false,
-		"removeComments": true,
-		"allowJs": true,
-		"alwaysStrict": true,
-		"listFiles": true
+    "files": [
+        "scripts/index.ts",
+        "scripts/greet.ts"
+    ],
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "target": "es5"
     }
 }
