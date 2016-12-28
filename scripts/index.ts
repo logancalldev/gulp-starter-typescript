@@ -1,8 +1,4 @@
-import { sayHello } from "./greet";
-
-function showHello(divName: string, name: string): void {
-	const elt = document.getElementById(divName);
-	elt.innerText = sayHello(name);
-}
-
-showHello("greeting", 'Logan');
+/// <reference path="../typings/index.d.ts" />
+import * as $ from 'jquery'
+(<any>window).jQuery = $
+import 'bootstrap-sass'

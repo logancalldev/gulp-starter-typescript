@@ -6,7 +6,7 @@
 3. run `gulp`
 
 ### This gulp-starter does the following:
-* Compiles Typescript into ES5 (JavaScript), which includes Browserify so you can use commonjs modules (import/export) 
+* Compiles Typescript into ES5 (JavaScript), which includes Browserify so you can use commonjs modules (import/export). **PLEASE NOTE:** Using this system ultimately compiles all of your TS/JS into one bundle.js... including the libaries you import. This starter is setup by default to import jQuery and Boostrap JS files.
 * Compiles Sass into CSS
 * Minifies images (loseless)
 * Creates iconfont based on SVGs
