@@ -1,10 +1,7 @@
 {
-    "files": [
-        "scripts/index.ts",
-        "scripts/greet.ts"
-    ],
-    "compilerOptions": {
-        "noImplicitAny": true,
-        "target": "es5"
-    }
+	"files": ["scripts/**"],
+	"compilerOptions": {
+		"noImplicitAny": true,
+		"target": "es5"
+	}
 }
