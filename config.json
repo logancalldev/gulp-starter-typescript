@@ -2,6 +2,10 @@
 	"vhost": "http://gulp:80",
 	"dist": "../public/assets/",
 	"sassIndex": "styles/index.scss",
+	"sassFilesToLint": [
+		"styles/**",
+		"!styles/vendor/**"
+	],
 	"scriptEntries": [
 		"scripts/index.ts"
 	],

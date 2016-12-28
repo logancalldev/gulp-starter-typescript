@@ -13,12 +13,17 @@ const sass = require("gulp-sass");
 const rucksack = require("gulp-rucksack");
 const cssnano = require("gulp-cssnano");
 const rename = require("gulp-rename");
+const postcss = require("gulp-postcss");
+const stylelint = require('stylelint');
+const reporter = require('postcss-reporter');
+const syntax_scss = require('postcss-scss');
 const typescriptConfig = require("./tsconfig.json"); // config options – https://www.typescriptlang.org/docs/handbook/compiler-options.html
+const stylelintConfig = require("./.stylelintrc.json");
 const conf = require("./config.json");
 
 gulp.task("tslint", () =>
 	gulp.src(["scripts/*.ts", "scripts/**/*.ts"])
-		.pipe(plumber(function (error, second) {
+		.pipe(plumber(function (error) {
 			gutil.log(gutil.colors.red(error.message));
 			this.emit("end");
 		}))
@@ -41,7 +46,7 @@ gulp.task("scripts", ["tslint"], () => {
 	})
 		.plugin(tsify, typescriptConfig)
 		.bundle()
-		.pipe(plumber(function (error, second) {
+		.pipe(plumber(function (error) {
 			gutil.log(gutil.colors.red(error.message));
 			this.emit("end");
 		}))
@@ -54,20 +59,37 @@ gulp.task("scripts", ["tslint"], () => {
 		.pipe(browserSync.stream());
 });
 
-gulp.task("styles", () => {
-	return gulp.src(conf.sassIndex)
-	.pipe(plumber(function (error, second) {
+gulp.task("sass-lint", () => {
+	const processors = [
+		stylelint(stylelintConfig),
+		reporter({
+			clearMessages: true,
+			throwError: true
+		})
+	];
+
+	return gulp.src(conf.sassFilesToLint)
+		.pipe(plumber(function (error) {
 			gutil.log(gutil.colors.red(error.message));
 			this.emit("end");
 		}))
-	.pipe(sourcemaps.init())
-	.pipe(sass().on('error', sass.logError))
-	.pipe(rucksack({autoprefixer: true}))
-	.pipe(cssnano())
-	.pipe(rename("bundle.css"))
-	.pipe(sourcemaps.write())
-	.pipe(gulp.dest(conf.dist))
-	.pipe(browserSync.stream());
+		.pipe(postcss(processors, {syntax: syntax_scss}));
+})
+
+gulp.task("styles", ["sass-lint"], () => {
+	return gulp.src(conf.sassIndex)
+		.pipe(plumber(function (error) {
+			gutil.log(gutil.colors.red(error.message));
+			this.emit("end");
+		}))
+		.pipe(sourcemaps.init())
+		.pipe(sass().on('error', sass.logError))
+		.pipe(rucksack({ autoprefixer: true }))
+		.pipe(cssnano())
+		.pipe(rename("bundle.css"))
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest(conf.dist))
+		.pipe(browserSync.stream());
 })
 
 gulp.task("watch", ["scripts", "styles"], () => {
@@ -87,7 +109,7 @@ gulp.task("watch", ["scripts", "styles"], () => {
 	});
 
 	gulp.watch(["scripts/**"], ["scripts"]);
-	gulp.watch( ["styles/**"], ["styles"] );
+	gulp.watch(["styles/**"], ["styles"]);
 	gulp.watch([conf.watchedViews]).on("change", browserSync.reload);
 });
 
