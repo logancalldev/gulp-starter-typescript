@@ -23,8 +23,8 @@
 * Linting Typescript (for better in-editor hinting, install the plugin for your code editor)
 * Scss and Typescript sourcemaps, so that you know which file errors occur in – not just it's location in the bundled file
 
-### Using JavaScript libraries with Typescript
-This is what **typings** are for (MUST HAVE in order for Typescript to work with regular JavaScript libraries). Be sure to have `typings` installed globally with npm. I've already setup the project to use both the jQuery and Bootstrap libraries with Typescript
+### Using JavaScript libraries within Typescript
+This is what **typings** are for (**MUST HAVE** in order for Typescript to work with regular JavaScript libraries). Be sure to have `typings` installed globally with npm. I've already setup the project to use both the jQuery and Bootstrap libraries with Typescript
 
 Learn more about typings: 
 1. https://github.com/typings/typings
