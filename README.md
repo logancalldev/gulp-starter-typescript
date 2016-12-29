@@ -1,4 +1,4 @@
-# Gulp, Typescript, Browserify, BrowserSync, Sass
+# Yarn, Gulp, Typescript, Browserify, BrowserSync, Sass, Cachebusting, Linting
 
 ## Get Started
 1. Make sure you have the following npm modules installed globally
