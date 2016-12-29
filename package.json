@@ -1,7 +1,7 @@
 {
   "name": "gulp-starter",
   "version": "2.0.0",
-  "description": "A Gulp starter that processes Sass into CSS, Typescript into JS, SVGs into font-icons, and does image minification",
+  "description": "A Gulp starter that processes Sass into CSS, Typescript into JS, SVGs into font-icons. Additionally it does loseless image minification, sourcemapping, Sass and Typescript Linting, Livereloading, and Cachebusting",
   "main": "Gulpfile.js",
   "repository": "ssh://git@git.lovecomm.net:7999/ldev/front-end-boilerplate.git",
   "author": "Logan Call <logancall.dev@gmail.com>",
