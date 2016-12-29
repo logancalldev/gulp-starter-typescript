@@ -1,9 +1,16 @@
 # Gulp, Typescript, Browserify, BrowserSync, Sass
 
 ## Get Started
-1. Make sure you have yarn installed globally, then run `yarn`
-2. Take a look at the config.json, update the vhost and other variables to your liking
-3. run `gulp`
+1. Make sure you have the following npm modules installed globally
+	* yarn
+	* gulp
+	* typescript
+	* tslint
+	* typings
+	* stylelint
+2. Run `yarn` to install all dependencies
+3. Take a look at the config.json, update the vhost and other variables to your liking
+4. Run `gulp` to compile/minify/generate your files and to start live-reloading
 
 ### This gulp-starter does the following:
 * Compiles Typescript into ES5 (JavaScript), which includes Browserify so you can use commonjs modules (import/export). **PLEASE NOTE:** Using this system ultimately compiles all of your TS/JS into one bundle.js... including the libaries you import. This starter is setup by default to import jQuery and Boostrap JS files.
