@@ -1,4 +1,5 @@
 {
+	"configBasedir": "./",
 	"extends": "stylelint-config-standard",
   "rules": {
     "indentation": ["tab", {
@@ -7,6 +8,6 @@
   },
 	"ignoreFiles": [
 		"./node_modules/**",
-		"./styles/iconfont.scss"
+		"./source/styles/iconfont.scss"
 	]
 }

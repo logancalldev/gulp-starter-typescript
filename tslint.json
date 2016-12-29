@@ -8,7 +8,5 @@
 	"jsRules": {
 		"curly": true,
 		"indent": [true, "tabs"]
-	},
-	"rulesDirectory": [
-	]
+	}
 }

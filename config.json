@@ -1,14 +1,20 @@
 {
 	"vhost": "http://gulp:80",
-	"dist": "../public/assets/",
-	"sassIndex": "styles/index.scss",
+	"dist": "public/assets/",
+	"sassIndex": "source/styles/index.scss",
 	"sassFilesToLint": [
-		"styles/**"
+		"source/styles/**"
+	],
+	"typescriptsToLint": [
+		"source/scripts/*.ts",
+		"source/scripts/**/*.ts",
+		"!source/scripts/typings/*.ts",
+		"!source/scripts/typings/**/*.ts"
 	],
 	"scriptEntries": [
-		"scripts/index.ts"
+		"source/scripts/index.ts"
 	],
 	"watchedViews": [
-		"../public/*.html"
+		"public/*.html"
 	]
 }
