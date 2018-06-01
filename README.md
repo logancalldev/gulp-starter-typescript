@@ -1,5 +1,7 @@
 # Yarn, Gulp, Typescript, Browserify, BrowserSync, Sass, Cachebusting, Linting
 
+>This is no longer maintained. I'd recommend using this instead, https://github.com/SeaMonster-Studios/webpack-proxy-starter
+
 ## Get Started
 1. Make sure you have the following npm modules installed globally
 	* yarn
